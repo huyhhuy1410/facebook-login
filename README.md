@@ -1,51 +1,51 @@
-# Facebook Login for WordPress
+# Login with Facebook — Custom WordPress Authentication Plugin
 
-A WordPress plugin that adds Facebook-based login to the frontend and optionally to the WordPress admin login screen. It includes a settings page, shortcode rendering, JavaScript login flow, token verification, user creation, and avatar import.
+> **Lightweight OAuth 2.0 Social Login Plugin for WordPress**  
+> *A clean, modular WordPress plugin enabling seamless 1-click user authentication via the Facebook Graph API.*
 
-## What It Does
+[![WordPress](https://img.shields.io/badge/WordPress-5.0%2B-21759B?style=flat-square&logo=wordpress&logoColor=white)](https://wordpress.org)
+[![PHP](https://img.shields.io/badge/PHP-7.4%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://php.net)
+[![OAuth 2.0](https://img.shields.io/badge/OAuth-2.0-3DDC84?style=flat-square&logo=openid&logoColor=white)](https://oauth.net/2/)
 
-- Adds a Facebook login button through shortcode.
-- Optionally displays the Facebook login button on the WordPress login screen.
-- Provides a WordPress admin settings page for Facebook App configuration.
-- Verifies Facebook login tokens before creating or logging in users.
-- Creates WordPress users from Facebook profile data when no matching user exists.
-- Logs existing users in when the Facebook email matches an existing account.
-- Imports and stores the Facebook profile image as the WordPress avatar metadata.
-- Supports redirect configuration after successful login.
+---
 
-## Shortcodes
+## 📌 Technical Motivation
 
-- `[facebook_login]` renders the frontend Facebook login button.
-- `[admin_facebook_login]` renders the admin/login-screen button.
+Reducing login friction is critical for e-commerce conversion rates. **Login with Facebook** is an **independent custom WordPress plugin** built to integrate OAuth 2.0 social login directly into WordPress registration and WooCommerce checkout workflows without bloated third-party dependencies.
 
-## Main Features
+---
 
-- Configurable App ID / client ID.
-- Optional login redirect URL.
-- Optional display on the WordPress admin login form.
-- Custom class and ID settings for the rendered shortcode button.
-- Admin tabs for guide, general settings, and usage.
-- Lightweight notice system for settings validation and save feedback.
+## ⚙️ Core Technical Features
 
-## Technical Notes
+1. **OAuth 2.0 Authentication Flow**
+   - Redirects users securely to Facebook's OAuth 2.0 dialog (`https://www.facebook.com/v12.0/dialog/oauth`).
+   - Exchanges authorization codes for Graph API access tokens.
+   - Fetches verified profile data (`id`, `name`, `email`) to authenticate or auto-register WordPress users.
+2. **Shortcode & Admin Integration**
+   - Admin settings page (`admin.php?page=facebook-login`) for configuring App ID (Client ID) and App Secret.
+   - Embeddable shortcodes for customizable login buttons anywhere in posts, pages, or sidebar widgets.
+3. **Automatic Account Provisioning**
+   - If an existing user matches the verified Facebook email, they are logged in immediately.
+   - If no account exists, a new WordPress user is generated with a secure random password and logged in seamlessly.
 
-- Main class: `Facebook_Login`
-- Login method class: `Facebook_Login_Method`
-- Admin page class: `Facebook_Login_Admin_Page`
-- Shortcode classes:
-  - `facebook_login\Shortcodes\Facebook_Btn`
-  - `facebook_login\Shortcodes\Admin_Facebook_Btn`
-- AJAX action: `facebook_login`
-- Frontend assets:
-  - `assets/js/login.js`
-  - `assets/css/login.css`
-- Token verification endpoint: Facebook token info API.
+---
 
-## Installation
+## 🚀 Quick Start & Setup
 
-1. Upload the plugin folder to `wp-content/plugins/facebook-login`.
-2. Activate the plugin in WordPress Admin.
-3. Open the Facebook Login settings page.
-4. Enter the Facebook App ID / client ID.
-5. Add `[facebook_login]` to any page, template, or builder field where the login button should appear.
+1. Clone or download into your WordPress plugins directory:
+   ```bash
+   cd wp-content/plugins/
+   git clone https://github.com/huyhhuy1410/facebook-login.git facebook-login
+   ```
+2. Activate **Login with Facebook** in **WordPress Admin $\rightarrow$ Plugins**.
+3. Go to **Settings $\rightarrow$ Facebook Login** and enter your **Facebook App ID** and **App Secret** (obtained from [Meta for Developers](https://developers.facebook.com/)).
+4. Add the shortcode to your login page or WooCommerce checkout:
+   ```text
+   [facebook_login_btn]
+   ```
 
+---
+
+## 📄 License & Provenance Notice
+
+Created by Vo Quang Huy for technical demonstration. Open-source and free of proprietary code.
